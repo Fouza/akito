@@ -1,0 +1,39 @@
+.main {
+  background-color: var(--ion-background-color, #ffedbc) !important;
+}
+
+.md ion-menu {
+  --ion-background-color: #ffffff !important;
+}
+.md ion-header {
+  --ion-background-color: linear-gradient(#ff8008, #ffc837) !important;
+}
+
+.md:ion-menu {
+  --ion-background-color: linear-gradient(#ff8008, #ffc837) !important;
+}
+ion-menu {
+  --ion-background-color: #ffffff !important;
+}
+ion-header {
+  --ion-background-color: linear-gradient(#ff8008, #ffc837) !important;
+}
+ion-content {
+  background-color: var(--ion-background-color, #ffedbc) !important;
+}
+.md ion-content {
+  background-color: var(--ion-background-color, #ffedbc) !important;
+}
+ion-card {
+  background-color: #ffffff !important;
+}
+.md ion-card {
+  background-color: #ffffff !important;
+}
+ion-list {
+  background-color: #ffffff !important;
+}
+
+.md ion-list {
+  background-color: #ffffff !important;
+}

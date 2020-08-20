@@ -1,0 +1,71 @@
+.header-ne {
+  color: black;
+  text-decoration: solid;
+}
+
+.search-combine {
+  color: white;
+  /* background-color: rgba(224, 75, 16, 0.877) !important; */
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+/* .row {
+  text-align: center;
+  margin-top: 200px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+} */
+
+.table {
+  min-width: 350px;
+}
+
+.container {
+  margin: 0 auto;
+  display: inline-block;
+  position: relative;
+  margin-top: 220px;
+}
+.MuiTableContainer-root {
+  width: 90% !important;
+}
+
+/* @media screen and (max-width: 600px) {
+  .MuiTableContainer-root {
+    width: 90% !important;
+  }
+} */
+/* .container {
+  display: inline-block;
+  float: none;
+  width: 600px;
+} */
+
+ion-item {
+  --ion-background-color: #ffffff !important;
+  min-width: 200px;
+  margin: 6px;
+}
+
+.cardHeader {
+  min-height: 50px;
+  font-size: larger;
+}
+
+.label-col {
+  display: flex;
+  align-items: center;
+}
+
+.search-button-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.modal-card {
+  border: none !important;
+  box-shadow: none !important;
+}

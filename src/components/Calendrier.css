@@ -1,0 +1,15 @@
+.poid-input {
+  padding-right: 16px;
+}
+
+.title-card {
+  font-size: 20px;
+}
+.btn-enreg {
+  background-color: rgba(224, 75, 16, 0.877);
+  border-radius: 15px;
+  text-align: justify;
+  width: 55%;
+  color: white !important;
+  margin-left: 25%;
+}

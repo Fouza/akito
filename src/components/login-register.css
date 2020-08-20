@@ -1,0 +1,9 @@
+.form {
+  background-image: url("../assets/images/cerise.jpg");
+  background-position: center;
+  background-size: center;
+}
+.textHeader {
+  color: black;
+  text-align: center;
+}
