@@ -21,6 +21,7 @@ import {
   IonSegment,
   IonSegmentButton,
   IonText,
+  IonAlert,
 } from "@ionic/react";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
@@ -33,8 +34,10 @@ interface AccueilProps {
 }
 
 const Calendrier: React.FC<AccueilProps> = ({ name }) => {
-  const [poids, setPoids] = useState<Number>(0);
+  const [poids, setPoids] = useState<number>(0);
   const [segment, setSegment] = useState("exercises");
+  const [alert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
   const [exos, setExos] = useState([
     {
       id: 0,
@@ -107,7 +110,7 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
     };
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/getListExercisePerformed`,
         config
@@ -184,7 +187,7 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
     };
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/getListExercisePerformedToday `,
         config
@@ -206,7 +209,7 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
 
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/getListOfFoodEatenToday `,
         config
@@ -233,16 +236,27 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
 
     await axios
       .post(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/fitnessDetails/addOrUpdateWeight?newWeight=${poids}`,
         {},
         config
       )
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
+        if (res.status == 200) {
+          setMessage("Poids enregistré avec succès");
+          setAlert(true);
+        } else {
+          setMessage("Erreur inconnue, veuillez réessayer !");
+          setAlert(true);
+        }
+        setPoids(0);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage("Erreur inconnue, veuillez réessayer !");
+        setAlert(true);
+      });
   }
 
   function handleSubmitWeight() {
@@ -263,7 +277,7 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
     };
     await axios
       .delete(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/removeSelectFoodFromCurrentUser/Food/${id}`,
         config
@@ -273,8 +287,18 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
           return f.food.id != id;
         });
         setFood(foodFiltered);
+        if (res.status == 200) {
+          setMessage("Aliment annulé");
+          setAlert(true);
+        } else {
+          setMessage("Erreur inconnue, veuillez réessayer !");
+          setAlert(true);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage("Erreur inconnue, veuillez réessayer !");
+        setAlert(true);
+      });
   }
 
   async function deleteExoPerformed(id: any) {
@@ -291,7 +315,7 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
     };
     await axios
       .delete(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/removeSelectExerciseFromCurrentUser/Exercise/${id}`,
         config
@@ -301,8 +325,18 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
           return exo.exercise.id != id;
         });
         setExos(exoFiltered);
+        if (res.status == 200) {
+          setMessage("Exercice annulé");
+          setAlert(true);
+        } else {
+          setMessage("Erreur inconnue, veuillez réessayer !");
+          setAlert(true);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setMessage("Erreur inconnue, veuillez réessayer !");
+        setAlert(true);
+      });
   }
 
   function handleDeleteFoodEaten(e: any) {
@@ -364,6 +398,14 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
 
   return (
     <IonContent>
+      <IonAlert
+        isOpen={alert}
+        onDidDismiss={() => setAlert(false)}
+        mode="ios"
+        //ubHeader={"Inscription avec succès"}
+        message={message}
+        buttons={["OK"]}
+      />
       <IonGrid>
         <IonRow>
           <IonCol sizeLg="12" sizeMd="12" sizeSm="12" sizeXs="12">
@@ -377,6 +419,7 @@ const Calendrier: React.FC<AccueilProps> = ({ name }) => {
                     <IonInput
                       type="number"
                       placeholder="Entrez le poids (Kg)"
+                      value={poids}
                       onIonChange={(e) =>
                         setPoids(parseInt(e.detail.value!, 10))
                       }

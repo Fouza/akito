@@ -67,7 +67,7 @@ const Stepper: React.FC<StepperProps> = ({ name }) => {
     };
     await axios
       .post(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/addProfile`,
         {

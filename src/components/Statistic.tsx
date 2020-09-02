@@ -54,6 +54,9 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
   const [salt, setSalt] = useState(0);
   const [vit, setVit] = useState(0);
   const [weight, setWeight] = useState(0);
+  const [percentage, setPercentage] = useState(0);
+  const [alert, setAlert] = useState(false);
+  const [message, setMessage] = useState("");
 
   async function getNbExo() {
     let config = {
@@ -63,7 +66,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getNbreOfExercisePerformedToday`,
       config
@@ -80,7 +83,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getTimeDoneExercisePerformedForCurrentUser`,
       config
@@ -97,12 +100,13 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getCaloriesConsumedOfFoodEatenToday`,
       config
     ).then((res) => {
       setCalCons(res.data);
+      setPercentage((res.data * 100) / 2500);
     });
   }
 
@@ -114,7 +118,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/countCaloriesBurnedForCurrentUserToday`,
       config
@@ -131,7 +135,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getProteinsConsumedOfFoodEatenToday`,
       config
@@ -148,7 +152,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getSaltConsumedOfFoodEatenToday`,
       config
@@ -165,7 +169,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getVitaminesConsumedOfFoodEatenToday`,
       config
@@ -182,13 +186,20 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
       },
     };
     await Axios.get(
-      `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+      `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
         "id"
       )}/getWeightDataForCurrentUser`,
       config
     ).then((res) => {
+      console.log(res.data);
       if (res.data.length > 0) {
         setWeight(res.data[res.data.length - 1].poids);
+        if (res.data[res.data.length - 1].poids == 0) {
+          setMessage(
+            "Vous avez mis 0 dans le dernier poids que vous avez enregistré, veuillez enregistrer de nouveau."
+          );
+          setAlert(true);
+        }
       }
     });
   }
@@ -206,10 +217,18 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
     }
   }, []);
   // console.log(val.toLocaleDateString());
-  const percentage = 33;
+
   if (localStorage.getItem("fitnessExist") == "true") {
     return (
       <IonContent>
+        <IonAlert
+          isOpen={alert}
+          onDidDismiss={() => setAlert(false)}
+          mode="ios"
+          //ubHeader={"Inscription avec succès"}
+          message={message}
+          buttons={["OK"]}
+        />
         <IonGrid>
           <IonRow class="circle-row ion-justify-content-center ion-align-items-center">
             <IonCol sizeLg="4" sizeXs="12">

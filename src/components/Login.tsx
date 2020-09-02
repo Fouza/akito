@@ -87,7 +87,7 @@ const Login: React.FC = () => {
     };
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/user/hasProfile/${id}`,
+        `http://943d9664f0a6.ngrok.io/api/service/user/hasProfile/${id}`,
         config
       )
       .then((res) => {
@@ -96,7 +96,12 @@ const Login: React.FC = () => {
           window.location.replace("/page/Accueil");
         } else {
           localStorage.setItem("fitnessExist", "false");
-          if (!isPlatform("desktop")) {
+          if (
+            !isPlatform("desktop") &&
+            !isPlatform("mobileweb") &&
+            !isPlatform("tablet") &&
+            !isPlatform("pwa")
+          ) {
             window.location.replace("/stepper");
           } else {
             window.location.replace("page/Profile");
@@ -110,7 +115,7 @@ const Login: React.FC = () => {
   async function connectRequest() {
     await axios
       .post(
-        "http://ef0c96339a16.ngrok.io/api/auth/signin",
+        "http://943d9664f0a6.ngrok.io/api/auth/signin",
         {
           username: username,
           password: pwd,
@@ -149,7 +154,7 @@ const Login: React.FC = () => {
   async function registerRequest() {
     await axios
       .post(
-        "http://ef0c96339a16.ngrok.io/api/auth/signup",
+        "http://943d9664f0a6.ngrok.io/api/auth/signup",
         {
           username: usernameReg,
           password: pwdReg,

@@ -18,6 +18,10 @@
   justify-content: flex-start;
 } */
 
+.row {
+  margin-top: 150px;
+  margin-bottom: 20px;
+}
 .table {
   min-width: 350px;
 }
@@ -63,6 +67,7 @@ ion-item {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .modal-card {

@@ -431,7 +431,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
     };
     await axios
       .get(
-        "http://ef0c96339a16.ngrok.io/api/service/categorieExercise/listCategoriesExercises",
+        "http://943d9664f0a6.ngrok.io/api/service/categorieExercise/listCategoriesExercises",
         {
           headers: {
             Accept: "application/json",
@@ -447,7 +447,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
       .catch((err) => console.log(err));
     await axios
       .get(
-        "http://ef0c96339a16.ngrok.io/api/service/categoriesFood/listCategoriesFood",
+        "http://943d9664f0a6.ngrok.io/api/service/categoriesFood/listCategoriesFood",
         {
           headers: {
             Accept: "application/json",
@@ -483,7 +483,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
       },
     };
     await axios
-      .get("http://ef0c96339a16.ngrok.io/api/service/exercise/listeExercises", {
+      .get("http://943d9664f0a6.ngrok.io/api/service/exercise/listeExercises", {
         headers: {
           Accept: "application/json",
           "Access-Control-Allow-Headers":
@@ -500,7 +500,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
   async function searchExoCat() {
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/exercise/listeExercisesByCategory?category=${exoCat}`,
+        `http://943d9664f0a6.ngrok.io/api/service/exercise/listeExercisesByCategory?category=${exoCat}`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -541,7 +541,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
   async function searchExoKey() {
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/exercise/listeExercisesByKeyWord?keyword=${exoKey}`,
+        `http://943d9664f0a6.ngrok.io/api/service/exercise/listeExercisesByKeyWord?keyword=${exoKey}`,
         {
           headers: {
             //Accept: "application/json",
@@ -586,7 +586,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
   async function searchExoCal() {
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/exercise/listeExercisesByCalories?from=${exoCalFrom}&to=${exoCalTo}`,
+        `http://943d9664f0a6.ngrok.io/api/service/exercise/listeExercisesByCalories?from=${exoCalFrom}&to=${exoCalTo}`,
         {
           headers: {
             //Accept: "application/json",
@@ -657,6 +657,54 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
     setExoCalFrom("");
     setExoCalTo("");
     setExoKey("");
+    setExoCatResult([
+      {
+        id: 0,
+        name: "",
+        image: { unknown },
+        duration: 0,
+        caloriesBurned: 0.0,
+        category: {
+          id: 0,
+          name: "",
+          description: "",
+          image: { meme },
+          hibernateLazyInitializer: {},
+        },
+      },
+    ]);
+    setExoKeyResult([
+      {
+        id: 0,
+        name: "",
+        image: { unknown },
+        duration: 0,
+        caloriesBurned: 0.0,
+        category: {
+          id: 0,
+          name: "",
+          description: "",
+          image: { meme },
+          hibernateLazyInitializer: {},
+        },
+      },
+    ]);
+    setExoCalResult([
+      {
+        id: 0,
+        name: "",
+        image: { unknown },
+        duration: 0,
+        caloriesBurned: 0.0,
+        category: {
+          id: 0,
+          name: "",
+          description: "",
+          image: { meme },
+          hibernateLazyInitializer: {},
+        },
+      },
+    ]);
   }
 
   function handleViderFood() {
@@ -664,11 +712,119 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
     setFoodCalFrom("");
     setFoodCalTo("");
     setFoodKey("");
+    setFoodCatResult([
+      {
+        id: 0,
+        name: "",
+        image: "",
+        calories: 0,
+        category: {
+          id: 0,
+          name: "",
+          description: "",
+          image: "",
+        },
+        detailfood: {
+          idnutritiondetails: 0,
+          id: 0,
+          name: "",
+          calories: 0,
+          eau: 0,
+          proteins: 0,
+          sucres: 0,
+          fibres: 0,
+          acidessatures: 0,
+          cholesterol: 0,
+          calcium: 0,
+          potasium: 0,
+          sodium: 0,
+          vitamineB9: 0,
+          vitamineC: 0,
+          vitamineB6: 0,
+          vitamineB3: 0,
+          vitamineB12: 0,
+          vitamineD: 0,
+          vitamineE: 0,
+        },
+      },
+    ]);
+    setFoodKeyResult([
+      {
+        id: 0,
+        name: "",
+        image: "",
+        calories: 0,
+        category: {
+          id: 0,
+          name: "",
+          description: "",
+          image: "",
+        },
+        detailfood: {
+          idnutritiondetails: 0,
+          id: 0,
+          name: "",
+          calories: 0,
+          eau: 0,
+          proteins: 0,
+          sucres: 0,
+          fibres: 0,
+          acidessatures: 0,
+          cholesterol: 0,
+          calcium: 0,
+          potasium: 0,
+          sodium: 0,
+          vitamineB9: 0,
+          vitamineC: 0,
+          vitamineB6: 0,
+          vitamineB3: 0,
+          vitamineB12: 0,
+          vitamineD: 0,
+          vitamineE: 0,
+        },
+      },
+    ]);
+    setFoodCalResult([
+      {
+        id: 0,
+        name: "",
+        image: "",
+        calories: 0,
+        category: {
+          id: 0,
+          name: "",
+          description: "",
+          image: "",
+        },
+        detailfood: {
+          idnutritiondetails: 0,
+          id: 0,
+          name: "",
+          calories: 0,
+          eau: 0,
+          proteins: 0,
+          sucres: 0,
+          fibres: 0,
+          acidessatures: 0,
+          cholesterol: 0,
+          calcium: 0,
+          potasium: 0,
+          sodium: 0,
+          vitamineB9: 0,
+          vitamineC: 0,
+          vitamineB6: 0,
+          vitamineB3: 0,
+          vitamineB12: 0,
+          vitamineD: 0,
+          vitamineE: 0,
+        },
+      },
+    ]);
   }
 
   async function getListeFood() {
     await axios
-      .get("http://ef0c96339a16.ngrok.io/api/service/food/listeFood", {
+      .get("http://943d9664f0a6.ngrok.io/api/service/food/listeFood", {
         headers: {
           Accept: "application/json",
           "Access-Control-Allow-Headers":
@@ -693,7 +849,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
   async function searchFoodCat() {
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/food/listeFoodByCategory?category=${foodCat}`,
+        `http://943d9664f0a6.ngrok.io/api/service/food/listeFoodByCategory?category=${foodCat}`,
         {
           headers: {
             //Accept: "application/json",
@@ -729,7 +885,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
   async function searchFoodKey() {
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/food/listeFoodByKeyWord?keyword=${foodKey}`,
+        `http://943d9664f0a6.ngrok.io/api/service/food/listeFoodByKeyWord?keyword=${foodKey}`,
         {
           headers: {
             //Accept: "application/json",
@@ -765,7 +921,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
   async function searchFoodCal() {
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/food/listeFoodCaloriesBetween?from=${parseFloat(
+        `http://943d9664f0a6.ngrok.io/api/service/food/listeFoodCaloriesBetween?from=${parseFloat(
           foodCalFrom
         )}&to=${parseFloat(foodCalTo)}`,
         {
@@ -831,7 +987,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
     };
     await axios
       .post(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${id}/fitnessDetails/addExercise/${addedExo.id}`,
+        `http://943d9664f0a6.ngrok.io/api/service/user/${id}/fitnessDetails/addExercise/${addedExo.id}`,
         {
           // idE: addedExo.id,
           // caloriesBurned: caloriesBurned,
@@ -861,7 +1017,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
     // console.log(addedExo.id);
     await axios
       .post(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${id}/fitnessDetails/addFood/${addedFood.id}`,
+        `http://943d9664f0a6.ngrok.io/api/service/user/${id}/fitnessDetails/addFood/${addedFood.id}`,
         {},
         config
       )
@@ -985,11 +1141,11 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
       rowsPerPage - Math.min(rowsPerPage, exos.length - page * rowsPerPage);
     return (
       <TableBody>
-        {emptyRows > 0 && (
+        {/* {emptyRows > 0 && (
           <TableRow style={{ height: 53 * emptyRows }}>
             <TableCell colSpan={6} />
           </TableRow>
-        )}
+        )} */}
         {(rowsPerPage > 0
           ? exos.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
           : exos
@@ -1316,6 +1472,7 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
             </IonButton>
           </IonCol>
         </IonRow>
+
         <IonRow className="row">
           <TableContainer component={Paper} className="container">
             <Table
@@ -1342,8 +1499,8 @@ const Accueil: React.FC<AccueilProps> = ({ name }) => {
                     rowsPerPageOptions={[
                       5,
                       10,
-                      25,
-                      { label: "Tout", value: -1 },
+                      // 25,
+                      // { label: "Tout", value: -1 },
                     ]}
                     colSpan={3}
                     count={exercices.length}

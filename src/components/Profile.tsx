@@ -125,7 +125,7 @@ const Profile: React.FC<ProfileProps> = ({ name }) => {
     };
     await axios
       .post(
-        `http://ef0c96339a16.ngrok.io/api/service/user/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/${localStorage.getItem(
           "id"
         )}/addProfile`,
         {
@@ -154,7 +154,7 @@ const Profile: React.FC<ProfileProps> = ({ name }) => {
     };
     await axios
       .put(
-        `http://ef0c96339a16.ngrok.io/api/service/user/updateRequestSign/${id}`,
+        `http://943d9664f0a6.ngrok.io/api/service/user/updateRequestSign/${id}`,
         {
           username: username,
           email: email,
@@ -181,7 +181,7 @@ const Profile: React.FC<ProfileProps> = ({ name }) => {
     };
     await axios
       .put(
-        `http://ef0c96339a16.ngrok.io/api/service/user/detailsUser/${id}/updatePassword`,
+        `http://943d9664f0a6.ngrok.io/api/service/user/detailsUser/${id}/updatePassword`,
         {
           oldPassword: oldPwd,
           newPassword: pwd,
@@ -204,7 +204,7 @@ const Profile: React.FC<ProfileProps> = ({ name }) => {
     };
     await axios
       .get(
-        `http://ef0c96339a16.ngrok.io/api/service/user/getCurrent/${localStorage.getItem(
+        `http://943d9664f0a6.ngrok.io/api/service/user/getCurrent/${localStorage.getItem(
           "id"
         )}`,
         config
