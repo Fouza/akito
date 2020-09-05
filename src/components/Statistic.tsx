@@ -34,6 +34,7 @@ import "./statistic.css";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import Axios from "axios";
+import ReactFC from "react-fusioncharts";
 
 interface StatisticProps {
   name: string;
@@ -57,6 +58,7 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
   const [percentage, setPercentage] = useState(0);
   const [alert, setAlert] = useState(false);
   const [message, setMessage] = useState("");
+  const [data, setData] = useState([]);
 
   async function getNbExo() {
     let config = {
@@ -201,9 +203,24 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
           setAlert(true);
         }
       }
+      if (res.data.length < 10) {
+        let array = res.data;
+        let donnee: any = [];
+        array.map((element: any, index: any) => {
+          donnee[index] = { label: element.date, value: element.poids };
+        });
+        setData(donnee);
+      } else {
+        let array = res.data.slice(res.data.length - 10);
+        let donnee2: any = [];
+        array.map((element: any, index: any) => {
+          donnee2[index] = { label: element.date, value: element.poids };
+        });
+        setData(donnee2);
+      }
     });
   }
-
+  console.log(data);
   useEffect(() => {
     if (localStorage.getItem("fitnessExist") == "true") {
       getNbExo();
@@ -217,6 +234,26 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
     }
   }, []);
   // console.log(val.toLocaleDateString());
+
+  const dataSource = {
+    chart: {
+      caption: "Date d'enregistrement de poids",
+      subCaption: "Poids enregistré",
+      xAxisName: "Date",
+      yAxisName: "Poids",
+      numberSuffix: "K",
+      theme: "fusion",
+    },
+    data: data,
+  };
+
+  const chartConfigs = {
+    type: "column2d",
+    width: 600,
+    height: 400,
+    dataFormat: "json",
+    dataSource: dataSource,
+  };
 
   if (localStorage.getItem("fitnessExist") == "true") {
     return (
@@ -331,6 +368,16 @@ const Statistic: React.FC<StatisticProps> = ({ name }) => {
               </IonCard>
             </IonCol>
           </IonRow> */}
+          <IonRow>
+            <IonCol>
+              <IonCard>
+                <IonCardHeader>Evolution du poids</IonCardHeader>
+                <IonCardContent>
+                  <ReactFC {...chartConfigs} />
+                </IonCardContent>
+              </IonCard>
+            </IonCol>
+          </IonRow>
         </IonGrid>
       </IonContent>
     );
