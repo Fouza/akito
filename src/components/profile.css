@@ -1,0 +1,28 @@
+ion-grid {
+  height: 100%;
+}
+.photoUser {
+  /* border: "1px solid black"; */
+  /*minHeight: "100px" */
+  border-radius: 20%;
+  max-height: 100%;
+}
+.bar {
+  padding: 3px;
+}
+.title-card {
+  color: rgb(12, 5, 5);
+  text-align: justify;
+  font-family: arial;
+  font-size: 15px;
+  display: block;
+}
+
+.btn-maj {
+  background-color: rgba(224, 75, 16, 0.877);
+  border-radius: 15px;
+  text-align: justify;
+  width: 55%;
+  color: white !important;
+  margin-left: 25%;
+}

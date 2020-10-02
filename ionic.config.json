@@ -1,0 +1,7 @@
+{
+  "name": "kitoproject",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

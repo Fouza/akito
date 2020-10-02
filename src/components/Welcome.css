@@ -1,0 +1,161 @@
+.grid {
+  background-color: #fc861e;
+}
+.top-nav {
+  overflow: hidden;
+}
+.a {
+  float: left;
+  text-align: center;
+}
+.rest {
+  text-align: right;
+  font-size: 22px;
+  padding: 14px 16px;
+  color: #ffffff;
+}
+.first {
+  /* text-align: left; */
+  font-size: 28px;
+  padding: 8px 12px;
+  color: #ffffff;
+}
+
+.img {
+  height: 600px;
+}
+
+.part1 {
+  height: 550px;
+  /* padding: 0; */
+  background-image: url("../assets/photo.jpg");
+  background-position: center;
+  /* background-attachment: fixed; */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-logo {
+  font-size: 22px;
+  text-decoration: solid !important;
+  font-weight: 900;
+  color: #ffffff;
+}
+
+.h-text {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #190a3d;
+  font-size: 60px;
+}
+
+.b-text {
+  font-family: cursive;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 1000px) {
+  .h-text {
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    color: #190a3d;
+    font-size: 30px;
+  }
+
+  .b-text {
+    font-family: cursive;
+    font-size: 15px;
+  }
+}
+
+.about-img {
+  padding: 60px;
+}
+
+.about {
+  padding-top: 80px;
+}
+
+.h-about-text {
+  /* padding-left: 100px; */
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #190a3d;
+  font-size: 30px;
+}
+
+.b-about-text {
+  font-family: cursive;
+  color: #190a3d;
+  font-size: 15px;
+}
+
+.footer {
+  height: 30px;
+  margin-top: 40px;
+  background-color: #0a0a0a;
+}
+
+.f-text {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+
+@media screen and (max-width: 700px) {
+  .top-nav {
+    height: 55px;
+  }
+
+  .h-about-text {
+    /* padding-left: 100px; */
+    font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+    color: #190a3d;
+    font-size: 18px;
+  }
+
+  .b-about-text {
+    font-family: cursive;
+    color: #190a3d;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .nav-logo {
+    font-size: 22 px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  .rest {
+    text-align: right;
+    font-size: 18px;
+    padding: 12px 14px;
+    color: #ffffff;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 30px;
+  background-color: #9bff61;
+}
+
+.witness-title {
+  left: 38%;
+  margin-top: 80px;
+}
+.witness-text {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: #190a3d;
+  font-size: 50px;
+}
+
+.witness-row {
+}
+
+.witness-col {
+}
+
+.witness {
+  width: 370px;
+  border-radius: 15px;
+  background-color: transparent;
+}
